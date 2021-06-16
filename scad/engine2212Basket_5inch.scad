@@ -53,7 +53,7 @@ module engine2212_basket_inch5_rudder(px=0,py=0,pz=0, rx=0,ry=0,rz=0, isAdhesion
 module engine2212_basket_inch5_back(px=0,py=0,pz=0, rx=0,ry=0,rz=0, isMetal=false){
     translate([(px), (py), pz])
     rotate([rx,ry,rz]){             
-        yTube(71.3,69,4); 
+        yTube(71.3,68,4); 
         yTube(11.3,10,4);
         difference(){    
             yMinkCubeCyl(22,18,20,8.99, -60,0,20, 0,90,0, sx=2);
@@ -66,11 +66,15 @@ module engine2212_basket_inch5_back(px=0,py=0,pz=0, rx=0,ry=0,rz=0, isMetal=fals
         yTube(4,2,4,    60,0,80, 0,90,0);
         yTube(4,2,4,    -60,0,80, 0,90,0);
         //yCyl(1.5,120,   0,0,80, 0,90,0);
-                
-        yCyl(3,78,  65,0,39,    0,-7,0, sx=0.5);
+               
+        
+        yCyl(5,78,  65,0,39,    0,0,0, sy=0.5);
         yCyl(3,82,  62,15,39,    20,-6,10, sx=0.5);
         yCyl(3,82,  62,-15,39,    -20,-6,-10, sx=0.5);
-        yCyl(3.5,40,  -60,0,58,    0,0,0, sx=0.6);
+        
+        yCyl(3,82,  -62,15,39,    20,1,10, sx=0.5);
+        yCyl(3,82,  -62,-15,39,    -20,1,-10, sx=0.5);
+        yCyl(4,40,  -60,0,58,    0,0,0, sx=0.6);
         for (i=[0:45:360]){
             rotate([0,0,i])
             yCyl(1,60,  40,0,0,  0,90,0, sx=2);     
