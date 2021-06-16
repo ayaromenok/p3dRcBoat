@@ -3,19 +3,56 @@ include <../../lib/lib2/lib2_motor.scad>
 include <../../lib/lib2/lib2_prop.scad>
 include <../../lib/lib2/lib2_servo.scad>
 
-//engine2212_basket_inch5_back(0,0,36, 180,0,0);
-//engine2212_basket_inch5_front(isMetal=true);
-//engine2212_support(0,0,-30);
 
-//engine2212_basket_back_inch5();
-engine2212_basket_inch5_rudder();
+//engine2212_basket_inch5_assembly();
+
+//2print
 //engine2212_basket_inch5_front();
+//engine2212_basket_inch5_back();
 //engine2212_support(0,0,0, 0,0,45);
+//engine2212_basket_inch5_rudder(0,0,0, 0,90,90, isAdhesion=true);
 
-module engine2212_basket_inch5_rudder(px=0,py=0,pz=0, rx=0,ry=0,rz=0){
+module engine2212_basket_inch5_assembly(px=0,py=0,pz=0, rx=0,ry=0,rz=0, isAdhesion=false){
     translate([(px), (py), pz])
-    rotate([rx,ry,rz]){     
-        //servoSg90(-55,0,20,  0,90,0);
+    rotate([rx,ry,rz]){
+        rotate([0,-90,0]){
+            engine2212_basket_inch5_rudder(0,0,80+26);
+            engine2212_basket_inch5_back(0,0,25, 0,0,0, isMetal=true);
+            engine2212_basket_inch5_front(isMetal=true);
+            engine2212_support(0,0,-30, 0,0,135);
+        }
+    }//transform
+}//module                
+        
+module engine2212_basket_inch5_rudder(px=0,py=0,pz=0, rx=0,ry=0,rz=0, isAdhesion=false){
+    translate([(px), (py), pz])
+    rotate([rx,ry,rz]){
+        difference(){
+            union(){ 
+                yCyl(3,115.6,   0,0,0,  0,90,0,  sx=2);  
+                yCyl(3,115.6,   0,0,6,  0,90,0,  sx=4);  
+                yCyl(2.5,115.6,   0,0,12,  0,90,0,  sx=6);  
+                yCyl(2,200.6,   -42.5,0,20,  0,90,0,  sx=8);              
+            }//union
+            yCyl(0.9,20,    60,0,0,  0,90,0);
+            yCyl(0.9,20,    -60,0,0,  0,90,0);
+            //to servo
+            yCube(2.4,20,5.8,   -34,0,0);
+        }//difference
+        
+        
+        if (isAdhesion){
+            yTube(10,8,0.8,   (115.6/2-0.4),0,0,  0,90,0,  sx=2);  
+            yTube(10,8,0.8,   (115.6/2-0.4),0,15,  0,90,0,  sx=2);  
+            yTube(10,8,0.8,   (115.6/2-0.4),0,30,  0,90,0,  sx=2);  
+            yCube(12,3,1,     (115.6/2-0.4),0,40,  0,90,0 );
+            yCube(12,3,1,     (115.6/2-0.4),0,-10,  0,90,0 );
+        }//isAdhesion
+    }//transform
+}//module        
+module engine2212_basket_inch5_back(px=0,py=0,pz=0, rx=0,ry=0,rz=0, isMetal=false){
+    translate([(px), (py), pz])
+    rotate([rx,ry,rz]){             
         yTube(71.3,69,4); 
         yTube(11.3,10,4);
         difference(){    
@@ -25,13 +62,11 @@ module engine2212_basket_inch5_rudder(px=0,py=0,pz=0, rx=0,ry=0,rz=0){
             yCyl(0.5,20,    -50,0,6,  0,90,0);
             yCyl(0.5,20,    -50,0,34,  0,90,0);
         }//difference
-        
-        
+                
         yTube(4,2,4,    60,0,80, 0,90,0);
         yTube(4,2,4,    -60,0,80, 0,90,0);
         //yCyl(1.5,120,   0,0,80, 0,90,0);
-        
-        
+                
         yCyl(3,78,  65,0,39,    0,-7,0, sx=0.5);
         yCyl(3,82,  62,15,39,    20,-6,10, sx=0.5);
         yCyl(3,82,  62,-15,39,    -20,-6,-10, sx=0.5);
@@ -43,6 +78,9 @@ module engine2212_basket_inch5_rudder(px=0,py=0,pz=0, rx=0,ry=0,rz=0){
             rotate([0,0,i])
             yTube(3,1.7,4,  73,0,0);          
         }//for
+        if (isMetal){            
+            servoSg90(-55,0,20,  0,90,0);
+        }//isMetal
     }//transform
 }//module
         
@@ -87,6 +125,7 @@ module engine2212_support(px=0,py=0,pz=0, rx=0,ry=0,rz=0){
 }//module
 
 
+/*
 module engine2212_basket_inch5_back(px=0,py=0,pz=0, rx=0,ry=0,rz=0){
     translate([(px), (py), pz])
     rotate([rx,ry,rz]){        
@@ -101,7 +140,7 @@ module engine2212_basket_inch5_back(px=0,py=0,pz=0, rx=0,ry=0,rz=0){
         }//for
     }//transform
 }//module
-
+*/
 module engine2212_basket_inch5_front(px=0,py=0,pz=0, rx=0,ry=0,rz=0, isMetal=false){
     translate([(px), (py), pz])
     rotate([rx,ry,rz]){
