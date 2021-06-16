@@ -57,8 +57,8 @@ module engine2212_basket_inch5_back(px=0,py=0,pz=0, rx=0,ry=0,rz=0, isMetal=fals
         yTube(11.3,10,4);
         difference(){    
             yMinkCubeCyl(22,18,20,8.99, -60,0,20, 0,90,0, sx=2);
-            yCube(30,12.6,23.6, -60,0,20);
-            yCube(20,10,10, -70,0,10);
+            yCube(30,12.8,24.6, -60,0,20);
+            yCube(20,10,10, -65,0,10);
             yCyl(0.5,20,    -50,0,6,  0,90,0);
             yCyl(0.5,20,    -50,0,34,  0,90,0);
         }//difference
@@ -75,6 +75,7 @@ module engine2212_basket_inch5_back(px=0,py=0,pz=0, rx=0,ry=0,rz=0, isMetal=fals
         yCyl(3,82,  -62,15,39,    20,1,10, sx=0.5);
         yCyl(3,82,  -62,-15,39,    -20,1,-10, sx=0.5);
         yCyl(4,40,  -60,0,58,    0,0,0, sx=0.6);
+        yCyl(4,40,  -65,0,56,    0,0,0, sy=0.6);
         for (i=[0:45:360]){
             rotate([0,0,i])
             yCyl(1,60,  40,0,0,  0,90,0, sx=2);     
