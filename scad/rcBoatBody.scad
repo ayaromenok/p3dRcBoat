@@ -3,7 +3,7 @@ include <../../lib/lib2.scad>
 //scale([0.25,0.25,.25])
 //{
 //frontSection(rx=180);
-backSection(rx=180);
+//backSection(rx=180);
 
 module backSection(px=0,py=0,pz=0, rx=0,ry=0,rz=0){
     translate([px, py, pz])
