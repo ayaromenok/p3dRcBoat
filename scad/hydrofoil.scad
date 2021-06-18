@@ -5,7 +5,7 @@ include <../../lib/lib2.scad>
 
 
 //wingMain(isAdhesion=true);
-wingHolderDual(isAdhesion=true, length=60);
+//wingHolderDual(isAdhesion=true, length=60);
 
 module wingHolderDual(px=0,py=0,pz=0, rx=0,ry=0,rz=0, length=100, isAdhesion=false){
     translate([(px), (py), pz])
