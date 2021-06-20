@@ -6,7 +6,7 @@ include <../../lib/lib2.scad>
 
 //wingMain(isAdhesion=true);
 //wingHolderDual(isAdhesion=true, length=60);
-wingMainNACA(isAdhesion=true);
+//wingMainNACA(isAdhesion=true);
 
 function naca_half_thickness(x,t) = 5*t*(0.2969*sqrt(x) - 0.1260*x - 0.3516*pow(x,2) + 0.2843*pow(x,3) - 0.1015*pow(x,4));
 function naca_top_coordinates(t,n) = [ for (x=[0:1/(n-1):1]) [x, naca_half_thickness(x,t)]];

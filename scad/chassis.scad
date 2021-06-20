@@ -1,6 +1,6 @@
 include <../../lib/lib2.scad>
 
-chassisCenter();
+//chassisCenter();
 
 module chassisCenter(px=0,py=0,pz=0, rx=0,ry=0,rz=0){
     translate([px, py, pz])
