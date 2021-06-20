@@ -1,7 +1,7 @@
 include <../../lib/lib2.scad>
 
 
-fuselageSupport();
+//fuselageSupport();
 //fuselageMainBot();
 module fuselageSupport(px=0,py=0,pz=0, rx=0,ry=0,rz=0){
     translate([px, py, pz])    
@@ -26,8 +26,6 @@ module fuselageSupport(px=0,py=0,pz=0, rx=0,ry=0,rz=0){
                 }//for
             }//difference
         }//translate
-        
-
     }//transform
 }//module
 
@@ -42,17 +40,17 @@ module fuselageMainBot(px=0,py=0,pz=0, rx=0,ry=0,rz=0){
             }//for
             yCube(130,90,40,    0,0,33);
             yMinkCubeSphere(116,76,34, 10);
-            yCyl(5,20, -60,0,0,   0,90,0);
+            yCube(20,2.6,20, -60,0,5,   0,90,0);
             
             for (i=[-50:20:50]){
-                yCyl(0.9,20,    i,40,10, 90,0,0);
-                yCyl(0.9,20,    i,40,-10, 90,0,0);
+                yCyl(0.9,4.5,    i,40,10, 90,0,0);
+                yCyl(0.9,4.5,    i,40,-10, 90,0,0);
             
-                yCyl(0.9,20,    i,-40,10, 90,0,0);
-                yCyl(0.9,20,    i,-40,-10, 90,0,0);
+                yCyl(0.9,4.5,    i,-40,10, 90,0,0);
+                yCyl(0.9,4.5,    i,-40,-10, 90,0,0);
             
-                yCyl(0.9,20,    60,i,10, 0,90,0);
-                yCyl(0.9,20,    60,i,-10, 0,90,0);            
+                yCyl(0.9,4.50,    60,i,10, 0,90,0);
+                yCyl(0.9,4.5,    60,i,-10, 0,90,0);            
             }//for
         }//difference                
             
