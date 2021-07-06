@@ -2,11 +2,11 @@ include <../../lib/lib2.scad>
 
 //floatHiSpeed_front_v2();
 //floatHiSpeed_front_top_v2_1(133,ry=180);
-//floatHiSpeed_center_v2(ry=-90,rz=-90);
+//floatHiSpeed_center_v2();
 //rotated in Y axis for better print
-floatHiSpeed_front_v2(pz=-60,ry=-90,rz=0);
+//floatHiSpeed_front_v2(pz=-60,ry=-90,rz=0);
 //floatHiSpeed_front_top_v2(ry=-90,rz=0);
-//floatHiSpeed_center_v2(pz=122,ry=90,rz=0);
+floatHiSpeed_center_v2(pz=-60,ry=-90,rz=0);
 
 module floatHiSpeed_front_v2(px=0,py=0,pz=0, rx=0,ry=0,rz=0){
     translate([(px),(py),pz])
@@ -35,7 +35,7 @@ module floatHiSpeed_front_v2(px=0,py=0,pz=0, rx=0,ry=0,rz=0){
                 }//intersection
             }//difference
         
-            //nervure from nose
+            //nervure from front
             //1st 
             translate([76,150,0])
             rotate([90,0,0])
@@ -137,29 +137,72 @@ module floatHiSpeed_front_top_v2(px=0,py=0,pz=0, rx=0,ry=0,rz=0){
 
 module floatHiSpeed_center_v2(px=0,py=0,pz=0, rx=0,ry=0,rz=0){
     translate([(px),(py),pz])
-    rotate([rx,ry,rz]){        
-        difference(){
-            translate([90,0,0])
-            rotate([90,0,0])
-            linear_extrude(200)
-                polygon( points=[[0,30],[20,0],[0,-30], [4,-40],[-40,-40],[-40,40], [4,40]]);
+    rotate([rx,ry,rz]){
+        scale([1.2,1,1])    
+        union(){
+            difference(){
+                union(){
+                    difference(){
+                        translate([90,0,0])
+                        rotate([90,0,0])
+                        linear_extrude(200)
+                        polygon( points=[[0,30],[20,0],[0,-30], [4,-40],[-40,-40],[-40,40], [4,40]]);
                 
-            translate([45+43.8,-1.2,0])
+                        translate([45+43.8,-1.5,0])
+                        rotate([90,0,0])
+                        linear_extrude(197.6)
+                            polygon( points=[[0,30],[20,0],[0,-30], [4,-38.9],[-40,-38.9],[-40,38.9], [4,38.9]]);
+                    }//difference
+                    yCube(6,3,70,  53,-3,0);    
+                    yCube(6,3,70,  53,-198,0);    
+                    yCube(4,200,4,  52,-100,37);    
+                    yCube(4,200,4,  52,-100,-37);    
+                }//union
+                
+                yCyl(0.8,6,  53,-3,27, 90,90,0);
+                yCyl(0.8,6,  53,-3,-27, 90,90,0);
+                yCyl(1.5,6,  53,-198,27, 90,90,0);
+                yCyl(1.5,6,  53,-198,-27, 90,90,0);
+                
+                //connectors from front ot back            
+                yCyl(0.7,16,  53,-3,37, 0,90,0);
+                yCyl(0.7,16,  53,-3,-37, 0,90,0);
+            
+                yCyl(0.7,16,  53,-37.9,37, 0,90,0);
+                yCyl(0.7,16,  53,-37.9,-37, 0,90,0);
+            
+                yCyl(0.7,16,  53,-47.9,37, 0,90,0);
+                yCyl(0.7,16,  53,-47.9,-37, 0,90,0);
+            
+                yCyl(0.7,16,  53,-103,37, 0,90,0);
+                yCyl(0.7,16,  53,-103,-37, 0,90,0);
+            
+                yCyl(0.7,16,  53,-153,37, 0,90,0);
+                yCyl(0.7,16,  53,-153,-37, 0,90,0);
+            
+                yCyl(0.7,16,  53,-163,37, 0,90,0);
+                yCyl(0.7,16,  53,-163,-37, 0,90,0);
+            
+                yCyl(0.7,16,  53,-197,37, 0,90,0);
+                yCyl(0.7,16,  53,-197,-37, 0,90,0);
+            }//difference
+            
+            //nervure from front
+            //2st 
+            translate([90,-50,0])
             rotate([90,0,0])
-            linear_extrude(197.6)
-                polygon( points=[[0,30],[20,0],[0,-30], [4,-38.9],[-40,-38.9],[-40,38.9], [4,38.9]]);
-        }//difference
-        //middle                 
-        translate([90,-98,0])
-        rotate([90,0,0])
-        linear_extrude(1)
-            polygon( points=[[0,30],[20,0],[0,-30], [4,-40],[-40,-40],[-40,40], [4,40]]);
-        //connectors
-        yTube(2.5,0.7,6,  53,-3,37, 0,90,0);
-        yTube(2.5,0.7,6,  53,-3,-37, 0,90,0);
-        yTube(2.5,0.7,6,  53,-100.9,37, 0,90,0);
-        yTube(2.5,0.7,6,  53,-100.9,-37, 0,90,0);
-        yTube(2.5,0.7,6,  53,-197,37, 0,90,0);
-        yTube(2.5,0.7,6,  53,-197,-37, 0,90,0);
+            linear_extrude(1)
+                polygon( points=[[0,30],[20,0],[0,-30], [4,-40],[-40,-40],[-40,40], [4,40]]);
+            translate([90,-100,0])
+            rotate([90,0,0])
+            linear_extrude(1)
+                polygon( points=[[0,30],[20,0],[0,-30], [4,-40],[-40,-40],[-40,40], [4,40]]);
+            translate([90,-150,0])
+            rotate([90,0,0])
+            linear_extrude(1)
+                polygon( points=[[0,30],[20,0],[0,-30], [4,-40],[-40,-40],[-40,40], [4,40]]);
+            
+            
+        }//union
     }//transform
 }//module
