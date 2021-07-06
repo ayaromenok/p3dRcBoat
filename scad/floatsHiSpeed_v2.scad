@@ -1,12 +1,12 @@
 include <../../lib/lib2.scad>
 
-//floatHiSpeed_front_v2();
-//floatHiSpeed_front_top_v2_1(133,ry=180);
+//floatHiSpeed_front_v2();//132
+//floatHiSpeed_front_top_v2();
 //floatHiSpeed_center_v2();
 //rotated in Y axis for better print
 //floatHiSpeed_front_v2(pz=-60,ry=-90,rz=0);
 //floatHiSpeed_front_top_v2(ry=-90,rz=0);
-floatHiSpeed_center_v2(pz=-60,ry=-90,rz=0);
+//floatHiSpeed_center_v2(pz=-60,ry=-90,rz=0);
 
 module floatHiSpeed_front_v2(px=0,py=0,pz=0, rx=0,ry=0,rz=0){
     translate([(px),(py),pz])
@@ -104,34 +104,57 @@ module floatHiSpeed_front_top_v2(px=0,py=0,pz=0, rx=0,ry=0,rz=0){
                 translate([800, 0, 0])                
                     polygon( points=[[0,40],[10,0],[0,-40],[-40,-44],[-40,44]]);
             }//intersection
-        
+            
+            yCube(50,50,100,    80,18,0);
             //connectors
-            yCyl(2.5,26,  87,3,37, 0,90,0);
-            yCyl(2.5,26,  87,3,-37, 0,90,0);
-        
-            yCyl(2.5,26,  87,102,31, 0,90,0);
-            yCyl(2.5,26,  87,102,-31, 0,90,0);
+            yCyl(1.2,26,  80,197,0, 0,90,0);
             yCyl(2.5,26,  87,197,0, 0,90,0);
-        
-            yCyl(1.2,26,  80,3,37, 0,90,0);
-            yCyl(1.2,26,  80,3,-37, 0,90,0);
-        
+            
             yCyl(1.2,26,  80,102,31, 0,90,0);
             yCyl(1.2,26,  80,102,-31, 0,90,0);
-            yCyl(1.2,26,  80,197,0, 0,90,0);
+            yCyl(2.5,26,  87,102,31, 0,90,0);
+            yCyl(2.5,26,  87,102,-31, 0,90,0);
             
-            translate([0,50,0])
-            scale([1,1.4,1])
-            rotate([45,0,0])
-                yCone(50,26,    82,0,0, 0,90,0,  $fn=4);
-            yCyl(5,50,  79,50,0, 0,90,0);    
-            translate([0,135,0])
-            scale([1,1.8,1])
-            rotate([45,0,0])
-                yCone(30,18,    79,0,0, 0,90,0,  $fn=4);                 
+            yCyl(1.2,26,  80,47,35, 0,90,0);
+            yCyl(1.2,26,  80,47,-35, 0,90,0);
+            yCyl(2.5,26,  87,47,35, 0,90,0);
+            yCyl(2.5,26,  87,47,-35, 0,90,0);
         
-            yCyl(5,80,  85.5,95,0, 85,90,0);   
+            //lighters            
+          /*  
+            translate([0,140,0])
+            scale([1,1.2,1])
+            rotate([45,0,0])
+                yCone(30,17,    79,0,0, 0,90,0,  $fn=4);                         
+            
+            translate([0,90,0])
+            scale([1,1,1])
+            rotate([45,0,0])
+                yCone(40,24,    82,0,0, 0,90,0,  $fn=4);
+            */
+            yCyl(10,10, 73,185,0,    90,0,0, 0.4,,$fn=3);
+            yCyl(16,10, 73,175,0,    90,0,0, 0.4,,$fn=3);    
+            yCyl(21,10, 73,165,0,    90,0,0, 0.4,,$fn=3);    
+            yCyl(26,10, 73,155,0,    90,0,0, 0.4,,$fn=3);    
+            
+            yCyl(32,10, 73,144,0,    90,0,0, 0.4,,$fn=3);                
+            yCyl(36,10, 73,134,0,    90,0,0, 0.4,,$fn=3);
+            yCyl(41,10, 72.5,124,0,    90,0,0, 0.4,,$fn=3);
+            yCyl(44,10, 72.5,114,0,    90,0,0, 0.4,,$fn=3);
+            yCyl(47,9, 72.5,104.5,0,    90,0,0, 0.4,,$fn=3);
+            
+            yCyl(52,10, 72.5,94,0,    90,0,0, 0.4,,$fn=3);
+            yCyl(53,10, 72.5,84,0,    90,0,0, 0.4,,$fn=3);
+            yCyl(53,12, 72.5,74,0,    90,0,0, 0.4,,$fn=3);
+            yCyl(54,18, 72.5,59,0,    90,0,0, 0.4,,$fn=3);       
+            
+            for (i=[10:20:80]){
+                yCyl(0.9,30,    90,i,10, 0,90,0);
+                yCyl(0.9,30,    90,i,-10,0,90,0);
+            }//for
         }//difference
+      
+           
     }//transform
 }//module
 
