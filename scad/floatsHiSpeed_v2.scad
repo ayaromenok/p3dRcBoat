@@ -3,18 +3,91 @@ include <../../lib/lib2.scad>
 //floatHiSpeed_front_v2();//132
 //floatHiSpeed_front_top_v2();
 //floatHiSpeed_center_v2();
-//rotated in Y axis for better print
+//floatHiSpeed_center_v2(0,-200,0);
+//floatHiSpeed_front_top_v2_1(142,0,0,    0,180);
+//floatHiSpeed_front_top_v2_1_2(142,0,0,    0,180);
+//floatHiSpeed_center_top_v2_1(142,0,0,    0,180);
+//floatHiSpeed_center_top_v2_2(142,-200,0,    0,180);
+//2print rotated in Y axis for better print
 //floatHiSpeed_front_v2(pz=-60,ry=-90,rz=0);
 //floatHiSpeed_front_top_v2(ry=-90,rz=0);
 //floatHiSpeed_center_v2(pz=-60,ry=-90,rz=0);
 //floatHiSpeed_front_top_v2_1(ry=-90,rz=0);
+//floatHiSpeed_front_top_v2_1_2(ry=-90,rz=0);
+//floatHiSpeed_center_top_v2_1(ry=-90,rz=0);
+//floatHiSpeed_center_top_v2_2(ry=-90,rz=0);
+
+module floatHiSpeed_center_top_v2_1(px=0,py=0,pz=0, rx=0,ry=0,rz=0){
+    translate([(px),(py),pz])
+    rotate([rx,ry,rz])    
+    {
+    difference(){        
+            yCube(1,116,78,    82,-100,0);
+            //connectors            
+            yCyl(1.2,26,  80,-47,37, 0,90,0);
+            yCyl(1.2,26,  80,-47,-37, 0,90,0);
+            yCyl(1.2,26,  80,-103,37, 0,90,0);
+            yCyl(1.2,26,  80,-103,-37, 0,90,0);          
+            yCyl(1.2,26,  80,-153,37, 0,90,0);
+            yCyl(1.2,26,  80,-153,-37, 0,90,0); 
+        }//difference
+        yTube(3.5,1.2,3,  83,-47,37, 0,90,0);
+        yTube(3.5,1.2,3,  83,-47,-37, 0,90,0);
+        yTube(3.5,1.2,3,  83,-103,37, 0,90,0);
+        yTube(3.5,1.2,3,  83,-103,-37, 0,90,0);          
+        yTube(3.5,1.2,3,  83,-153,37, 0,90,0);
+        yTube(3.5,1.2,3,  83,-153,-37, 0,90,0); 
+        
+    }//transform
+}//module
+
+
+module floatHiSpeed_center_top_v2_2(px=0,py=0,pz=0, rx=0,ry=0,rz=0){
+    translate([(px),(py),pz])
+    rotate([rx,ry,rz])    
+    {
+    difference(){        
+            yCube(1,84,78,    82,0,0);
+            //connectors            
+            yCyl(1.2,26,  80,37,37, 0,90,0);
+            yCyl(1.2,26,  80,37,-37, 0,90,0);
+            yCyl(1.2,26,  80,3,37, 0,90,0);
+            yCyl(1.2,26,  80,3,-37, 0,90,0);          
+            yCyl(1.2,26,  80,-3,37, 0,90,0);
+            yCyl(1.2,26,  80,-3,-37, 0,90,0); 
+            yCyl(1.2,26,  80,-37,37, 0,90,0);
+            yCyl(1.2,26,  80,-37,-37, 0,90,0);          
+        
+        }//difference
+        yTube(3.5,1.2,3,  83,37,37, 0,90,0);
+        yTube(3.5,1.2,3,  83,37,-37, 0,90,0);
+        yTube(3.5,1.2,3,  83,3,37, 0,90,0);
+        yTube(3.5,1.2,3,  83,3,-37, 0,90,0);          
+        yTube(3.5,1.2,3,  83,-3,37, 0,90,0);
+        yTube(3.5,1.2,3,  83,-3,-37, 0,90,0); 
+        yTube(3.5,1.2,3,  83,-37,37, 0,90,0);
+        yTube(3.5,1.2,3,  83,-37,-37, 0,90,0);          
+        yCube(3,16,70,    83.5,,-0);
+        for (i=[-30:20:40]){
+            yTube(3.5,0.7,20,    92.5,i,10, 0,90,0);
+            yTube(3.5,0.7,20,    92.5,i,-10,0,90,0);
+            yCube(20,1,18,    92.5,i,0);
+            yCube(20,1,18,    92.5,i,00);
+         }//for
+         for (i=[-20:20:20]){
+            yCube(20.0,18,1,    92.5,i,10);
+            yCube(20.0,18,1,    92.5,i,-10);
+         }//for    
+    }//transform
+}//module
+
 module floatHiSpeed_front_top_v2_1(px=0,py=0,pz=0, rx=0,ry=0,rz=0){
     translate([(px),(py),pz])
     rotate([rx,ry,rz])    
     {
         difference(){
             yCyl(40,1, 83,0,0,  0,90,0, $fn=100, sy=5);
-            yCube(50,250,100,    80,-85,0);
+            yCube(50,250,100,    78,-83,0);
             //connectors
             yCyl(1.2,26,  80,197,0, 0,90,0);
             yCyl(1.2,26,  80,102,31, 0,90,0);
@@ -28,7 +101,7 @@ module floatHiSpeed_front_top_v2_1(px=0,py=0,pz=0, rx=0,ry=0,rz=0){
         yTube(3.5,1.2,3,  85,102,-31, 0,90,0);
         yTube(3.5,1.2,3,  85,47,35, 0,90,0);
         yTube(3.5,1.2,3,  85,47,-35, 0,90,0);
-        
+        /*
         yCube(20.0,18,1,    92.5,60,10);
         yCube(20.0,18,1,    92.5,60,-10);
         yCube(20,1,18,    92.5,50,0);
@@ -36,8 +109,49 @@ module floatHiSpeed_front_top_v2_1(px=0,py=0,pz=0, rx=0,ry=0,rz=0){
         for (i=[50:20:80]){
             yTube(3.5,0.7,20,    92.5,i,10, 0,90,0);
             yTube(3.5,0.7,20,    92.5,i,-10,0,90,0);
+         }//for           
+        */
+    }//transform
+}//module
+
+module floatHiSpeed_front_top_v2_1_2(px=0,py=0,pz=0, rx=0,ry=0,rz=0){
+    translate([(px),(py),pz])
+    rotate([rx,ry,rz])    
+    {
+        difference(){        
+            yCube(1,84,78,    82,0,0);
+            //connectors            
+            yCyl(1.2,26,  80,37,35, 0,90,0);
+            yCyl(1.2,26,  80,37,-35, 0,90,0);
+            yCyl(1.2,26,  80,3,37, 0,90,0);
+            yCyl(1.2,26,  80,3,-37, 0,90,0);          
+            yCyl(1.2,26,  80,-3,37, 0,90,0);
+            yCyl(1.2,26,  80,-3,-37, 0,90,0); 
+            yCyl(1.2,26,  80,-37,37, 0,90,0);
+            yCyl(1.2,26,  80,-37,-37, 0,90,0);          
+        
+        }//difference
+        yTube(3.5,1.2,3,  83,37,35, 0,90,0);
+        yTube(3.5,1.2,3,  83,37,-35, 0,90,0);
+        yTube(3.5,1.2,3,  83,3,37, 0,90,0);
+        yTube(3.5,1.2,3,  83,3,-37, 0,90,0);          
+        yTube(3.5,1.2,3,  83,-3,37, 0,90,0);
+        yTube(3.5,1.2,3,  83,-3,-37, 0,90,0); 
+        yTube(3.5,1.2,3,  83,-37,37, 0,90,0);
+        yTube(3.5,1.2,3,  83,-37,-37, 0,90,0);          
+        
+        yCube(3,16,70,    83.5,,-0);
+        
+        for (i=[-30:20:40]){
+            yTube(3.5,0.7,20,    92.5,i,10, 0,90,0);
+            yTube(3.5,0.7,20,    92.5,i,-10,0,90,0);
+            yCube(20,1,18,    92.5,i,0);
+            yCube(20,1,18,    92.5,i,00);
          }//for
-           
+         for (i=[-20:20:20]){
+            yCube(20.0,18,1,    92.5,i,10);
+            yCube(20.0,18,1,    92.5,i,-10);
+         }//for           
     }//transform
 }//module
 
