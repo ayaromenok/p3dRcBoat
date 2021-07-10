@@ -6,6 +6,7 @@ include <hydrofoil.scad>
 include <floatsHiSpeed_v2.scad>
 
 chassisCenter(60,0,0);
+chassisCenter(260,0,0);
 engine2212_basket_inch5_assembly(-40,0,86);
 
 //frontSection(0,80,-24);
@@ -21,16 +22,8 @@ wingMainNACA(140,0,-58, 90,10,180);
 wingHolder(120,10,-35,  0,180,180, length=60);
 wingHolder(120,-10,-35,  0,180,180, length=60);
 
-
-floatHiSpeed_front_v2(300,80,32, 0,90,-90);
-floatHiSpeed_front_top_v2(300,80,-100, 0,-90,-90);
-floatHiSpeed_center_v2(300,80,32, 0,90,-90);
-floatHiSpeed_center_v2(100,80,32, 0,90,-90);
-
-floatHiSpeed_front_v2(300,-80,32, 0,90,-90);
-floatHiSpeed_front_top_v2(300,-80,-100, 0,-90,-90);
-floatHiSpeed_center_v2(300,-80,32, 0,90,-90);
-floatHiSpeed_center_v2(100,-80,32, 0,90,-90);
+floatHiSpeed_v2_assmebly(360,80,35, 0,0,-90);
+floatHiSpeed_v2_assmebly(360,-80,35, 0,0,-90);
 
 //floats v1
 /*
