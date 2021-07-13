@@ -7,11 +7,55 @@ include <../../lib/lib2.scad>
 //wingMain(isAdhesion=true);
 //wingHolderDual(isAdhesion=true, length=60);
 //wingMainNACA(isAdhesion=true);
+//wingMainNACA_V(isAdhesion=true, length =100);
 
 function naca_half_thickness(x,t) = 5*t*(0.2969*sqrt(x) - 0.1260*x - 0.3516*pow(x,2) + 0.2843*pow(x,3) - 0.1015*pow(x,4));
 function naca_top_coordinates(t,n) = [ for (x=[0:1/(n-1):1]) [x, naca_half_thickness(x,t)]];
 function naca_bottom_coordinates(t,n) = [ for (x=[1:-1/(n-1):0]) [x, - naca_half_thickness(x,t)]];
 function naca_coordinates(t,n) = concat(naca_top_coordinates(t,n), naca_bottom_coordinates(t,n));
+
+module wingMainNACA_V(px=0,py=0,pz=0, rx=0,ry=0,rz=0, chord = 40, length=100, isAdhesion=false){
+    translate([(px), (py), pz])
+    rotate([rx,ry,rz]){
+        difference(){
+            union(){
+                rotate([20,0,0])
+                linear_extrude(height=length/2+4.5, center=true) {                    
+                    points = naca_coordinates(t=0.12,n=300);
+                        scale([chord,chord,1])
+                        polygon(points);
+                }//linear_extrude
+                translate([0,0,length/2])
+                rotate([-20,0,0])
+                linear_extrude(height=length/2+4.5, center=true) {                    
+                    points = naca_coordinates(t=0.12,n=300);
+                        scale([chord,chord,1])
+                        polygon(points);
+                }//linear_extrude
+            }//union
+            
+            yCube(50,20,10, 25,10,-length/4-4.5);
+            yCube(50,20,10, 25,10,length*0.75+4.5);
+            
+            yCyl(1.8,20,    10,0,length/4+10,  90,0,0);
+            yCyl(1.8,20,    30,0,length/4+10,  90,0,0);
+            yCyl(1.8,20,    10,0,length/4-10,  90,0,0);
+            yCyl(1.8,20,    30,0,length/4-10,  90,0,0);
+            
+            yCone(3,7,    10,-4,length/4+10,  -90,0,0);
+            yCone(3,7,    30,-5,length/4+10,  -90,0,0);
+            yCone(3,7,    10,-4,length/4-10,  -90,0,0);
+            yCone(3,7,    30,-5,length/4-10,  -90,0,0);            
+        }//difference
+            
+    }//transform
+    if (isAdhesion){
+            yTube(10,8,0.4,   10,10,-length/4+0.7,  0,0,0,  sx=2);              
+            yTube(10,8,0.4,   30,10,-length/4+0.7,  0,0,0,  sx=2);  
+            yCube(10,3,0.4,     -2.5,10,-length/4+0.7,  0,0,0 );
+            yCube(10,3,0.4,     42.5,10,-length/4+0.7,  0,0,0 );
+        }//isAdhesion
+}//module            
 
 module wingMainNACA(px=0,py=0,pz=0, rx=0,ry=0,rz=0, chord = 40, length=100, isAdhesion=false){
     translate([(px), (py), pz])
