@@ -5,7 +5,7 @@ include <../../lib/lib2.scad>
 
 
 //wingMain(isAdhesion=true);
-//wingHolderDual(isAdhesion=true, length=60);
+//wingHolderDual(isAdhesion=false, length=100);
 //wingMainNACA(isAdhesion=true);
 //wingMainNACA_V(isAdhesion=true, length =100);
 
@@ -89,8 +89,8 @@ module wingMainNACA(px=0,py=0,pz=0, rx=0,ry=0,rz=0, chord = 40, length=100, isAd
 module wingHolderDual(px=0,py=0,pz=0, rx=0,ry=0,rz=0, length=100, isAdhesion=false){
     translate([(px), (py), pz])
     rotate([rx,ry,rz]){
-        wingHolder(0,10,0,isAdhesion=true, length=length);
-        wingHolder(0,-10,0,isAdhesion=true, length=length);
+        wingHolder(0,10,0,isAdhesion=isAdhesion, length=length);
+        wingHolder(0,-10,0,isAdhesion=isAdhesion, length=length);
         yCyl(3,20,  0,0,-length/2+3,  90,0,0, sx=3);
     }//transform
 }//module            
