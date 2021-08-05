@@ -4,7 +4,7 @@
 
  - [Introduction](#intro)
  - [Work in Progress status](#wip)
- - [Version v0.1.1](#vZeroOneZero)
+ - [Version v0.1.1](#v0.1.1)
 
 ## Introduction
 
@@ -15,7 +15,7 @@ Impelented in OpenSCAD. To rebuild STL's required [p3d Lib2 0.2.2.20210804](http
 
 ![Hydroplane catamaran boat](https://github.com/ayaromenok/p3dRcCatamaran/blob/master/png/_assembly.png?raw=true)
 
-## v0.1.0 <a name="#vZeroOneZero"></a>
+## v0.1.1 <a name="v0.1.1"></a>
 
 - Version from 2021.07.13
 
